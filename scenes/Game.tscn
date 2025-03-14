@@ -1,3 +1,24 @@
-[gd_scene format=3 uid="uid://dvlt2o5b60e68"]
+[gd_scene load_steps=5 format=3 uid="uid://dvlt2o5b60e68"]
+
+[ext_resource type="Script" uid="uid://cdtggfeec0v7w" path="res://scenes/Game.gd" id="1_78awf"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_qbsmt"]
+[ext_resource type="PackedScene" uid="uid://bdvkdv77fslji" path="res://addons/midi/ADSR.tscn" id="2_cpr0p"]
+[ext_resource type="AudioStream" uid="uid://b8fkirb1eh1t5" path="res://maps/Shelter/ShelterAudio.mp3" id="3_cpr0p"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_78awf")
+
+[node name="BackingSong" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(576, 320)
+stream = ExtResource("3_cpr0p")
+max_distance = 32000.0
+attenuation = 1.03526
+max_polyphony = 12
+panning_strength = 0.0
+
+[node name="ADSR" parent="." instance=ExtResource("2_cpr0p")]
+script = null
+
+[node name="MidiPlayer" parent="." instance=ExtResource("1_qbsmt")]
+file = "res://maps/Shelter/LyricWulfShelter.mid"
+soundfont = "res://assets/sf/GS sound set (16 bit).SF2"
