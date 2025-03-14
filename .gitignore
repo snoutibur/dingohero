@@ -1,0 +1,25 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Rider-specific caches
+.idea/
+
+# Build output directories
+[Bb]in/
+[Oo]bj/
+
+# Packages directory
+[Pp]ackages/
+
+# Backup & hidden system files
+Thumbs.db
+Desktop.ini
+.DS_Store

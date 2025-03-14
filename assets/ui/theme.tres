@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bawo4huylley5"]
+
+[ext_resource type="FontFile" uid="uid://c2stfhup7nrvp" path="res://assets/ui/DeterminationSansMono.ttf" id="1_6cha6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cha6"]
+bg_color = Color(0.275835, 0.256302, 0.514192, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ib6tx"]
+
+[resource]
+default_font_size = 16
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_6cha6")
+Button/styles/hover = null
+Button/styles/normal = SubResource("StyleBoxFlat_6cha6")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/fonts/font = ExtResource("1_6cha6")
+Label/styles/normal = SubResource("StyleBoxEmpty_ib6tx")
