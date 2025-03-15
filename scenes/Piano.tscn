@@ -6,17 +6,18 @@
 bg_color = Color(1, 1, 1, 1)
 border_width_right = 3
 border_color = Color(0, 0, 0, 1)
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uiv44"]
 bg_color = Color(0, 0, 0, 1)
 
 [node name="Piano" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = -185.0
+size_flags_vertical = 4
 script = ExtResource("1_uiv44")
 
 [node name="Octave" type="Control" parent="."]
@@ -25,97 +26,114 @@ anchors_preset = 0
 offset_right = 224.0
 offset_bottom = 185.0
 
-[node name="Key60" type="Button" parent="Octave"]
+[node name="KeyC" type="Button" parent="Octave"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 185.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
+clip_text = true
 
-[node name="Key62" type="Button" parent="Octave"]
-layout_mode = 0
-offset_left = 32.0
-offset_right = 64.0
-offset_bottom = 185.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
-
-[node name="Key64" type="Button" parent="Octave"]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 96.0
-offset_bottom = 185.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
-
-[node name="Key65" type="Button" parent="Octave"]
-layout_mode = 0
-offset_left = 96.0
-offset_right = 128.0
-offset_bottom = 185.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
-
-[node name="Key67" type="Button" parent="Octave"]
-layout_mode = 0
-offset_left = 128.0
-offset_right = 160.0
-offset_bottom = 185.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
-
-[node name="Key69" type="Button" parent="Octave"]
-layout_mode = 0
-offset_left = 160.0
-offset_right = 192.0
-offset_bottom = 185.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
-
-[node name="Key71" type="Button" parent="Octave"]
-layout_mode = 0
-offset_left = 192.0
-offset_right = 224.0
-offset_bottom = 185.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
-
-[node name="Key61" type="Button" parent="Octave"]
+[node name="KeyCs" type="Button" parent="Octave"]
+z_index = 1
 layout_mode = 0
 offset_left = 20.0
 offset_right = 41.0
 offset_bottom = 121.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
+clip_text = true
 
-[node name="Key66" type="Button" parent="Octave"]
+[node name="KeyD" type="Button" parent="Octave"]
 layout_mode = 0
-offset_left = 116.0
-offset_right = 137.0
-offset_bottom = 121.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
+offset_left = 32.0
+offset_right = 64.0
+offset_bottom = 185.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
+clip_text = true
 
-[node name="Key68" type="Button" parent="Octave"]
-layout_mode = 0
-offset_left = 147.0
-offset_right = 168.0
-offset_bottom = 121.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
-
-[node name="Key70" type="Button" parent="Octave"]
-layout_mode = 0
-offset_left = 179.0
-offset_right = 200.0
-offset_bottom = 121.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
-
-[node name="Key63" type="Button" parent="Octave"]
+[node name="KeyDs" type="Button" parent="Octave"]
+z_index = 1
 layout_mode = 0
 offset_left = 52.0
 offset_right = 73.0
 offset_bottom = 121.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
+clip_text = true
+
+[node name="KeyE" type="Button" parent="Octave"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 96.0
+offset_bottom = 185.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
+clip_text = true
+
+[node name="KeyF" type="Button" parent="Octave"]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 128.0
+offset_bottom = 185.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
+clip_text = true
+
+[node name="KeyFs" type="Button" parent="Octave"]
+z_index = 1
+layout_mode = 0
+offset_left = 116.0
+offset_right = 137.0
+offset_bottom = 121.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
+clip_text = true
+
+[node name="KeyG" type="Button" parent="Octave"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 160.0
+offset_bottom = 185.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
+clip_text = true
+
+[node name="KeyGs" type="Button" parent="Octave"]
+z_index = 1
+layout_mode = 0
+offset_left = 147.0
+offset_right = 168.0
+offset_bottom = 121.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
+clip_text = true
+
+[node name="KeyA" type="Button" parent="Octave"]
+layout_mode = 0
+offset_left = 160.0
+offset_right = 192.0
+offset_bottom = 185.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
+clip_text = true
+
+[node name="KeyAs" type="Button" parent="Octave"]
+z_index = 1
+layout_mode = 0
+offset_left = 179.0
+offset_right = 200.0
+offset_bottom = 121.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
+clip_text = true
+
+[node name="KeyB" type="Button" parent="Octave"]
+layout_mode = 0
+offset_left = 192.0
+offset_right = 224.0
+offset_bottom = 185.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
+clip_text = true

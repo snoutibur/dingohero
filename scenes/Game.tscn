@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cdtggfeec0v7w" path="res://scripts/Game.gd" id="1_78awf"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_qbsmt"]
-[ext_resource type="AudioStream" path="res://maps/ShelterSegmented/ShelterSection.mp3" id="2_78awf"]
+[ext_resource type="AudioStream" uid="uid://b8fkirb1eh1t5" path="res://maps/Shelter/ShelterAudio.mp3" id="2_78awf"]
 [ext_resource type="PackedScene" uid="uid://bdvkdv77fslji" path="res://addons/midi/ADSR.tscn" id="2_cpr0p"]
 
 [node name="Game" type="Node2D"]
