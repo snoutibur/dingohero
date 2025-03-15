@@ -24,9 +24,14 @@ buses/default_bus_layout=""
 
 Global="*res://scripts/Global.gd"
 
+[display]
+
+window/size/viewport_width=1572
+window/size/viewport_height=630
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/midi/plugin.cfg", "res://addons/midi_import/plugin.cfg")
+enabled=PackedStringArray("res://addons/midi/plugin.cfg")
 
 [rendering]
 

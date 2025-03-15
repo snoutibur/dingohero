@@ -27,17 +27,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0wfyh")
-metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -85.0
-offset_bottom = -22.0
+offset_top = -80.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_sugp2")
@@ -45,7 +44,6 @@ theme_override_font_sizes/font_size = 32
 text = "!! DingoHero !!"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_lock_ = true
 
 [node name="Play" type="Button" parent="."]
 layout_mode = 1
@@ -65,14 +63,34 @@ text = "PLAY!"
 script = SubResource("GDScript_ig7tw")
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 464.0
-offset_top = 360.0
-offset_right = 688.0
-offset_bottom = 401.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = 40.0
+offset_right = 112.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_sugp2")
 text = "Settings"
 script = SubResource("GDScript_0wfyh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -30.0
+offset_right = 201.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme = ExtResource("2_sugp2")
+text = "Pre=Alpha | Snoutibur 2025"
 
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

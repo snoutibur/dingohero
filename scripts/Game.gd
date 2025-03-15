@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 # Audio player for the backing track, responsible for playing the song
 @onready var audio_player = $BackingSong
