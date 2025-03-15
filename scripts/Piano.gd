@@ -2,7 +2,7 @@ extends Control
 
 @onready var octave_template = $Octave
 
-var num_octaves = 3
+var num_octaves = 5
 var curNote = 60
 
 func generate_keys(octaves: int):
