@@ -7,6 +7,7 @@ extends Control
 
 
 func _ready():
+	# PLAY AUDIO #
 	midi_player.set_soundfont("res://assets/sf/GS sound set (16 bit).SF2")
 #	midi_player.set_file("res://maps/LyricWulfFish.mid")
 	midi_player.set_file("res://maps/Shelter/LyricWulfShelter.mid")
@@ -65,3 +66,7 @@ func spawnNote(note:int) -> void:
 		note_instance.position = Vector2(key_center_position.x, 0)
 	else:
 		push_error("Failed to get key.")
+
+## GAME END
+func _on_midi_player_finished() -> void:
+	get_tree().change_scene_to_file("res://scenes/GameEnd.tscn")

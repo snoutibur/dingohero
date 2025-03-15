@@ -37,6 +37,7 @@ volume_db = -6.0
 
 [node name="Button" type="Button" parent="."]
 z_index = 1
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 56.0
@@ -54,5 +55,6 @@ anchor_right = 0.0
 offset_right = 224.0
 grow_horizontal = 1
 
+[connection signal="finished" from="MidiPlayer" to="." method="_on_midi_player_finished"]
 [connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_player_midi_event"]
 [connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]
