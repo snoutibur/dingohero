@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvlt2o5b60e68"]
+[gd_scene load_steps=6 format=3 uid="uid://dvlt2o5b60e68"]
 
 [ext_resource type="Script" uid="uid://cdtggfeec0v7w" path="res://scripts/Game.gd" id="1_78awf"]
 [ext_resource type="AudioStream" uid="uid://b8fkirb1eh1t5" path="res://maps/Shelter/ShelterAudio.mp3" id="2_78awf"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="4_78awf"]
 [ext_resource type="PackedScene" uid="uid://pjn3fn5td8me" path="res://scenes/Piano.tscn" id="5_s0nni"]
+
+[sub_resource type="GDScript" id="GDScript_78awf"]
+resource_name = "MenuButton"
+script/source = "extends Button
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/main.tscn\")
+"
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_78awf")
@@ -30,6 +38,7 @@ offset_bottom = 48.0
 theme_type_variation = &"FlatButton"
 text = "[M]"
 clip_text = true
+script = SubResource("GDScript_78awf")
 
 [node name="Piano" parent="." instance=ExtResource("5_s0nni")]
 z_index = 1
@@ -43,3 +52,4 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_player_midi_event"]
+[connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]

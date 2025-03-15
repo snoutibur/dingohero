@@ -15,9 +15,8 @@ metadata/_edit_lock_ = true
 resource_name = "Settings"
 script/source = "extends Button
 
-
 func _on_pressed() -> void:
-		get_tree().change_scene_to_file(\"res://scenes/Settings.tscn\")
+	get_tree().change_scene_to_file(\"res://scenes/Settings.tscn\")
 "
 
 [node name="Node2D" type="Control"]
