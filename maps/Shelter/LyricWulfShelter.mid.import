@@ -1,0 +1,14 @@
+[remap]
+
+importer="com.nlaha.godotmidi"
+type="MidiResource"
+uid="uid://fjpo0iqrlmql"
+path="res://.godot/imported/LyricWulfShelter.mid-31fc8db50f8779cd22d6ef1cac200ac4.res"
+
+[deps]
+
+source_file="res://maps/Shelter/LyricWulfShelter.mid"
+dest_files=["res://.godot/imported/LyricWulfShelter.mid-31fc8db50f8779cd22d6ef1cac200ac4.res"]
+
+[params]
+

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvlt2o5b60e68"]
 
 [ext_resource type="Script" uid="uid://cdtggfeec0v7w" path="res://scripts/Game.gd" id="1_78awf"]
-[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_qbsmt"]
 [ext_resource type="AudioStream" uid="uid://b8fkirb1eh1t5" path="res://maps/Shelter/ShelterAudio.mp3" id="2_78awf"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="4_78awf"]
 [ext_resource type="PackedScene" uid="uid://pjn3fn5td8me" path="res://scenes/Piano.tscn" id="5_s0nni"]
 
 [node name="Game" type="Node2D"]
@@ -16,12 +16,6 @@ attenuation = 1e-05
 max_polyphony = 12
 panning_strength = 0.0
 
-[node name="MidiPlayer" parent="." instance=ExtResource("1_qbsmt")]
-file = "res://maps/Shelter/LyricWulfShelter.mid"
-playing = true
-volume_db = -6.0
-soundfont = "res://assets/sf/GS sound set (16 bit).SF2"
-
 [node name="Piano" parent="." instance=ExtResource("5_s0nni")]
 anchors_preset = 0
 anchor_top = 0.0
@@ -31,3 +25,8 @@ offset_top = 456.0
 offset_bottom = 456.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="MidiPlayer" parent="." instance=ExtResource("4_78awf")]
+soundfont = "res://assets/sf/GS sound set (16 bit).SF2"
+
+[connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_player_midi_event"]
