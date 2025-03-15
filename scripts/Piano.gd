@@ -45,4 +45,4 @@ func _ready():
 	if octave_template == null:
 		print("Octave template no exist!")
 	else:
-		generate_keys(5)
+		generate_keys(7)

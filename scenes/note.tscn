@@ -1,16 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfu0cgklatobf"]
 
-[ext_resource type="Script" uid="uid://qr8e5iwaks8m" path="res://scripts/Note.gd" id="1_t3yvt"]
+[sub_resource type="GDScript" id="GDScript_t3yvt"]
+resource_name = "Note"
+script/source = "extends Control
+
+func _on_leave_screen_screen_exited() -> void:
+	queue_free()
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3yvt"]
 size = Vector2(0.278525, 3.95764)
 
-[node name="Note" type="Node2D"]
-script = ExtResource("1_t3yvt")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(577.546, 324.575)
-scale = Vector2(57.4455, 32.3425)
+[node name="Note" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_t3yvt")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(-16.0174, 83.7807)
@@ -26,4 +30,8 @@ position = Vector2(32.0174, -19.7807)
 scale = Vector2(57.4455, 32.3425)
 shape = SubResource("RectangleShape2D_t3yvt")
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="LeaveScreen" type="VisibleOnScreenNotifier2D" parent="RigidBody2D"]
+position = Vector2(32.0173, -19.7807)
+scale = Vector2(0.800001, 6.4)
+
+[connection signal="screen_exited" from="RigidBody2D/LeaveScreen" to="." method="_on_leave_screen_screen_exited"]
