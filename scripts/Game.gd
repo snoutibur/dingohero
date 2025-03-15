@@ -14,14 +14,12 @@ func _ready():
 	audio_player.play()
 	midi_player.play()
 
-	spawnNote(60)
-
 # MIDI EVENT!
 func _on_midi_player_midi_event(channel, event):
 	# Spawn notes
 	match event.type:
 		SMF.MIDIEventType.note_on:
-			print(event.note)
+			spawnNote(event.note)
 
 	# Output event data to stdout
 	if(Global.debug_print):
@@ -54,6 +52,7 @@ func spawnNote(note:int) -> void:
 	# Load the note scene
 	var note_scene = preload("res://scenes/note.tscn")
 	var note_instance = note_scene.instantiate()
+	add_child(note_instance)
 
 	# Find the key
 	var target_key_path:String = "Piano/Oct" + str(Global.octaveOf(note)) + "/Key" + str(note)
@@ -61,7 +60,6 @@ func spawnNote(note:int) -> void:
 
 	# Put the note where it's supposed to go
 	if key:
-		note_instance.position.x = 90
-		note_instance.position.y = 90
+		note_instance.position = Vector2(key.position.x, 256)
 	else:
 		push_error("Failed to get key.")

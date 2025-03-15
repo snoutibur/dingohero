@@ -1,6 +1,6 @@
 extends Control
 
-var curNote:int = 36
+var curNote:int = 24
 @onready var octave_template = $Octave
 
 func generate_keys(octaves: int):
