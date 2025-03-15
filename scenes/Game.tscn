@@ -27,6 +27,5 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="MidiPlayer" parent="." instance=ExtResource("4_78awf")]
-soundfont = "res://assets/sf/GS sound set (16 bit).SF2"
 
 [connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_player_midi_event"]
