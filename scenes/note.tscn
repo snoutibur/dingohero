@@ -9,29 +9,35 @@ func _on_leave_screen_screen_exited() -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3yvt"]
-size = Vector2(0.278525, 3.95764)
+size = Vector2(0.104144, 1.94112)
 
 [node name="Note" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = -3.0
+offset_right = -3.0
 script = SubResource("GDScript_t3yvt")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(-16.0174, 83.7807)
 
 [node name="NoteRect" type="ColorRect" parent="RigidBody2D"]
-offset_left = 24.0173
-offset_top = -83.7807
-offset_right = 40.0173
-offset_bottom = 44.2193
+offset_left = 19.0
+offset_top = -84.0
+offset_right = 25.0
+offset_bottom = -20.0
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(32.0174, -19.7807)
+position = Vector2(22.0261, -52.171)
 scale = Vector2(57.4455, 32.3425)
 shape = SubResource("RectangleShape2D_t3yvt")
+disabled = true
+metadata/_edit_group_ = true
 
 [node name="LeaveScreen" type="VisibleOnScreenNotifier2D" parent="RigidBody2D"]
-position = Vector2(32.0173, -19.7807)
-scale = Vector2(0.800001, 6.4)
+position = Vector2(22.0174, -51.7807)
+scale = Vector2(0.3, 3.2)
+metadata/_edit_group_ = true
 
 [connection signal="screen_exited" from="RigidBody2D/LeaveScreen" to="." method="_on_leave_screen_screen_exited"]

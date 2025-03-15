@@ -22,7 +22,7 @@ panning_strength = 0.0
 volume_db = -6.0
 
 [node name="Button" type="Button" parent="."]
-z_index = 3
+z_index = 1
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 56.0
@@ -32,6 +32,7 @@ text = "[M]"
 clip_text = true
 
 [node name="Piano" parent="." instance=ExtResource("5_s0nni")]
+z_index = 1
 anchors_preset = 0
 anchor_top = 0.0
 anchor_right = 0.0

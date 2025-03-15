@@ -8,8 +8,9 @@ extends Node2D
 
 func _ready():
 	midi_player.set_soundfont("res://assets/sf/GS sound set (16 bit).SF2")
-	midi_player.set_file("res://maps/LyricWulfFish.mid")
-	
+#	midi_player.set_file("res://maps/LyricWulfFish.mid")
+	midi_player.set_file("res://maps/Shelter/LyricWulfShelter.mid")
+
 	# Start playback for audio and MIDI
 #	audio_player.play()
 	midi_player.play()
@@ -60,6 +61,7 @@ func spawnNote(note:int) -> void:
 
 	# Put the note where it's supposed to go
 	if key:
-		note_instance.position = Vector2(key.global_position.x, 0)
+		var key_center_position = key.global_position + (key.size * 0.25)
+		note_instance.position = Vector2(key_center_position.x, 0)
 	else:
 		push_error("Failed to get key.")
