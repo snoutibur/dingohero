@@ -19,24 +19,36 @@ func _ready():
 #	midi_player.set_file("res://maps/LyricWulfFish.mid")
 	visualMIDI.set_file("res://maps/Shelter/LyricWulfShelter.mid")
 
-	# Start playback for audio, MIDI, and metronome
+	# MIDI must start first so it has time to hit the piao.
+	visualMIDI.play()
+	var hold_time = Global.bars_on_screen * 4 * (60/Map.bpm)
+	await get_tree().create_timer(hold_time).timeout  # Wait for the delay
+
+	# Start playback for the audio and timekeeper.
 	metronome.start()
 	audio_player.play()
-	
-	visualMIDI.play()
+
 
 
 ## SYNC AUDIO / MIDI ##
+func beats_to_seconds(bar:int, beat:int , time_signature:int, bpm:float) -> float:
+	return (bar * 4 + beat) * (60.0 / Map.bpm)
+
+func beats_to_ticks(bar:int, beat: int, time_signature:int, ticks_per_beat:int) -> int:
+	return (bar * time_signature + beat) * ticks_per_beat
+
 func _on_metronome_metronome_tick(bar: int, beat: int) -> void:
 	# Turn metronome click to seconds
-	var metronone_seconds = (bar * 4 + beat) * (60.0 / Map.bpm)
+	var audio_target = beats_to_seconds(bar, beat, 4, Map.bpm)
 
 	# Sync Audio file
 	var audio_position = audio_player.get_playback_position()
-	if abs(audio_position - metronone_seconds) > .05:
-		audio_player.seek(metronone_seconds)
-		print("Resyncing audio to", metronone_seconds, "seconds")
+	if abs(audio_position - audio_target) > .05:
+		audio_player.seek(audio_target)
+		print("Resyncing audio to", audio_target, "seconds")
 
+	# Sync MIDI File
+	
 
 # MIDI EVENTS #
 # Visuals
@@ -90,6 +102,7 @@ func spawnNote(note:int) -> void:
 		note_instance.position = Vector2(key_center_position.x, 0)
 	else:
 		push_error("Failed to get key.")
+
 
 # Note speed is calculated under Map.gd and stored as class variables.
 # Note speed is dependent on window size and the distance between the piano and top of the game viewport.
