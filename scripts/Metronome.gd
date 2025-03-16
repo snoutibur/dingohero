@@ -9,8 +9,10 @@ extends Control
 
 # Timecode
 @export var bar:int = 0
-@export var eight:int = 0
+@export var fourth:int = 0
 @export var sixteenth:int = 0
+
+signal metronome_tick(beat:int, bar:int)
 
 func start():
 	var click:float = 15 / Map.bpm # 1/16 note resolution
@@ -19,18 +21,19 @@ func start():
 
 func _on_timer_timeout() -> void:
 	sixteenth+=1;
-	
 	if sixteenth > 4:
 		sixteenth = 1
-		eight+=1
+		fourth+=1
 		weak.play()
-	if eight > 4:
-		eight = 1
+	if fourth > 4:
+		fourth = 1
 		bar+=1
 		strong.play()
+		emit_signal("metronome_tick", fourth, bar)
+
 
 func _process(delta: float) -> void:
-	indicator_node.text = str(bar) + " . " + str(eight) + " . " + str(sixteenth)
+	indicator_node.text = str(bar) + " . " + str(fourth) + " . " + str(sixteenth)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_metronome"):

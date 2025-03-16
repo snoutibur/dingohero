@@ -18,9 +18,13 @@ func _ready():
 
 	# Start playback for audio, MIDI, and metronome
 	metronome.start()
-#	audio_player.play()
+	audio_player.play()
 	visualMIDI.play()
 
+
+## SYNC AUDIO / MIDI ##
+func _on_metronome_metronome_tick(beat: int, bar: int) -> void:
+	print("time " + str(bar) + "." + str(beat))
 
 # MIDI EVENTS #
 # Visuals
@@ -85,6 +89,7 @@ func adjust_fall_speed():
 
 func _on_resized() -> void:
 	adjust_fall_speed()
+
 
 ## GAME END
 func _on_midi_player_finished() -> void:

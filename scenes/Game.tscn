@@ -70,3 +70,4 @@ grow_horizontal = 0
 [connection signal="finished" from="VisualMIDI" to="." method="_on_midi_player_finished"]
 [connection signal="midi_event" from="VisualMIDI" to="." method="_on_midi_player_midi_event"]
 [connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]
+[connection signal="metronome_tick" from="Metronome" to="." method="_on_metronome_metronome_tick"]
