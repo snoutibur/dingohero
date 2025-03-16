@@ -15,7 +15,7 @@ func _ready():
 
 	# PLAY AUDIO #
 	# MIDI
-#	visualMIDI.set_soundfont(Global.soundfont)
+	visualMIDI.set_soundfont(Global.soundfont)
 #	midi_player.set_file("res://maps/LyricWulfFish.mid")
 	visualMIDI.set_file("res://maps/Shelter/LyricWulfShelter.mid")
 
@@ -27,7 +27,6 @@ func _ready():
 	# Start playback for the audio and timekeeper.
 	metronome.start()
 	audio_player.play()
-
 
 
 ## SYNC AUDIO / MIDI ##
@@ -48,7 +47,7 @@ func _on_metronome_metronome_tick(bar: int, beat: int) -> void:
 		print("Resyncing audio to", audio_target, "seconds")
 
 	# Sync MIDI File
-	
+	visualMIDI.sync_to_beat(bar, beat, 1)
 
 # MIDI EVENTS #
 # Visuals

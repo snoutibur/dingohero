@@ -1082,3 +1082,14 @@ func get_now_playing_polyphony( ) -> int:
 		if audio_stream_player.playing:
 			polyphony += 1
 	return polyphony
+
+# Sets time to specified click
+func sync_to_beat(bar:int, beat:int, sixteenth:int, time_signature_numberator:int =4):
+	var beats_per_bar = time_signature_numberator
+#	var total_beats = (bar-1) * beats_per_bar + (beat-1)
+	var total_beats = (bar) * beats_per_bar + (beat)
+	var total_sixteenths = total_beats * 4 + (sixteenth - 1)
+
+	# Set position where a quarter note = timebase ticks, a 16th is timebase/4
+	self.position = (total_sixteenths * self.smf_data.timebase) / 4
+	self._process_track
