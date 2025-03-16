@@ -15,9 +15,9 @@ script = ExtResource("1_gxcby")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 24.0
+offset_left = 88.0
 offset_top = 8.0
-offset_right = 240.0
+offset_right = 176.0
 offset_bottom = 40.0
 
 [node name="Indicator" type="Label" parent="."]
@@ -27,9 +27,10 @@ offset_top = 8.0
 offset_right = 256.0
 offset_bottom = 40.0
 theme = ExtResource("2_xr3cw")
-text = "[beat:quarter:eigth:sixteenth]"
+text = "[quarter:eigth:sixteenth]"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="."]
 

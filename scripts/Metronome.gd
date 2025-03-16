@@ -5,7 +5,7 @@ extends Control
 @onready var strong = $StrongClick
 @onready var weak = $WeakClick
 
-@export var metronome_running:bool = false;
+@export var metroClick:bool = true;
 
 # Timecode
 @export var bar:int = 0
@@ -29,8 +29,17 @@ func _on_timer_timeout() -> void:
 		bar+=1
 		strong.play()
 
-func _input(event: InputEvent) -> void:
-	pass
-
 func _process(delta: float) -> void:
 	indicator_node.text = str(bar) + " . " + str(eight) + " . " + str(sixteenth)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_metronome"):
+		if metroClick:
+			metroClick = false
+			weak.volume_linear = 0
+			strong.volume_linear = 0
+		else:
+			metroClick = true
+			weak.volume_linear = 1
+			strong.volume_linear = 1
+		print("Metronome click is " + str(metroClick))
