@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvlt2o5b60e68"]
+[gd_scene load_steps=7 format=3 uid="uid://dvlt2o5b60e68"]
 
 [ext_resource type="Script" uid="uid://cdtggfeec0v7w" path="res://scripts/Game.gd" id="1_78awf"]
 [ext_resource type="AudioStream" uid="uid://b8fkirb1eh1t5" path="res://maps/Shelter/ShelterAudio.mp3" id="2_78awf"]
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="4_78awf"]
+[ext_resource type="PackedScene" uid="uid://bj1eib58c5cw0" path="res://scenes/Metronome.tscn" id="5_aug50"]
 [ext_resource type="PackedScene" uid="uid://pjn3fn5td8me" path="res://scenes/Piano.tscn" id="5_s0nni"]
 
 [sub_resource type="GDScript" id="GDScript_78awf"]
@@ -21,7 +22,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_78awf")
-metadata/_edit_horizontal_guides_ = [256.0]
 
 [node name="BackingSong" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(576, 320)
@@ -54,6 +54,17 @@ anchors_preset = 2
 anchor_right = 0.0
 offset_right = 224.0
 grow_horizontal = 1
+
+[node name="Metronome" parent="." instance=ExtResource("5_aug50")]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -260.0
+offset_bottom = 48.0
+grow_horizontal = 0
 
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="finished" from="VisualMIDI" to="." method="_on_midi_player_finished"]

@@ -4,6 +4,8 @@ extends Control
 @onready var audio_player = $BackingSong
 # MIDI player, responsible for handling MIDI note events
 @onready var visualMIDI = $VisualMIDI
+# Metronome display and audio
+@onready var metronome = $Metronome
 
 func _ready():
 	adjust_fall_speed()
@@ -14,9 +16,11 @@ func _ready():
 #	midi_player.set_file("res://maps/LyricWulfFish.mid")
 	visualMIDI.set_file("res://maps/Shelter/LyricWulfShelter.mid")
 
-	# Start playback for audio and MIDI
+	# Start playback for audio, MIDI, and metronome
+	metronome.start()
 #	audio_player.play()
 	visualMIDI.play()
+
 
 # MIDI EVENTS #
 # Visuals

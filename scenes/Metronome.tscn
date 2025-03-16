@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj1eib58c5cw0"]
+
+[ext_resource type="Script" uid="uid://cd5xn32tkf1am" path="res://scripts/Metronome.gd" id="1_gxcby"]
+[ext_resource type="Theme" uid="uid://bawo4huylley5" path="res://assets/ui/theme.tres" id="2_xr3cw"]
+[ext_resource type="AudioStream" uid="uid://bqnaucnqm78qk" path="res://assets/sfx/ITM OH.wav" id="3_akg8f"]
+[ext_resource type="AudioStream" uid="uid://peyw01bimpfm" path="res://assets/sfx/ITM HH.wav" id="4_xpuvg"]
+
+[node name="Metronome" type="Control"]
+layout_mode = 3
+anchor_right = 0.168
+anchor_bottom = 0.076
+offset_bottom = 0.119995
+grow_horizontal = 2
+script = ExtResource("1_gxcby")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 240.0
+offset_bottom = 40.0
+
+[node name="Indicator" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 256.0
+offset_bottom = 40.0
+theme = ExtResource("2_xr3cw")
+text = "[beat:quarter:eigth:sixteenth]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="StrongClick" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(8, 8)
+stream = ExtResource("3_akg8f")
+max_distance = 999999.0
+attenuation = 1e-05
+
+[node name="WeakClick" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(240, 40)
+stream = ExtResource("4_xpuvg")
+max_distance = 999999.0
+attenuation = 1e-05
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
