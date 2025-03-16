@@ -1,3 +1,4 @@
+
 extends Control
 
 # Audio player for the backing track, responsible for playing the song
@@ -6,6 +7,8 @@ extends Control
 @onready var visualMIDI = $VisualMIDI
 # Metronome display and audio
 @onready var metronome = $Metronome
+
+var playing:bool = false
 
 func _ready():
 	adjust_fall_speed()
@@ -19,12 +22,21 @@ func _ready():
 	# Start playback for audio, MIDI, and metronome
 	metronome.start()
 	audio_player.play()
+	
 	visualMIDI.play()
 
 
 ## SYNC AUDIO / MIDI ##
-func _on_metronome_metronome_tick(beat: int, bar: int) -> void:
-	print("time " + str(bar) + "." + str(beat))
+func _on_metronome_metronome_tick(bar: int, beat: int) -> void:
+	# Turn metronome click to seconds
+	var metronone_seconds = (bar * 4 + beat) * (60.0 / Map.bpm)
+
+	# Sync Audio file
+	var audio_position = audio_player.get_playback_position()
+	if abs(audio_position - metronone_seconds) > .05:
+		audio_player.seek(metronone_seconds)
+		print("Resyncing audio to", metronone_seconds, "seconds")
+
 
 # MIDI EVENTS #
 # Visuals

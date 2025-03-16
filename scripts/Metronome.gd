@@ -12,7 +12,7 @@ extends Control
 @export var fourth:int = 0
 @export var sixteenth:int = 0
 
-signal metronome_tick(beat:int, bar:int)
+signal metronome_tick(bar:int, beat:int)
 
 func start():
 	var click:float = 15 / Map.bpm # 1/16 note resolution
@@ -21,15 +21,17 @@ func start():
 
 func _on_timer_timeout() -> void:
 	sixteenth+=1;
+
 	if sixteenth > 4:
+		emit_signal("metronome_tick", bar, fourth)
 		sixteenth = 1
 		fourth+=1
 		weak.play()
+
 	if fourth > 4:
 		fourth = 1
 		bar+=1
 		strong.play()
-		emit_signal("metronome_tick", fourth, bar)
 
 
 func _process(delta: float) -> void:
