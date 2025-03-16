@@ -3,20 +3,23 @@ extends Control
 # Audio player for the backing track, responsible for playing the song
 @onready var audio_player = $BackingSong
 # MIDI player, responsible for handling MIDI note events
-@onready var midi_player = $MidiPlayer
-
+@onready var visualMIDI = $VisualMIDI
 
 func _ready():
+	adjust_fall_speed()
+
 	# PLAY AUDIO #
-	midi_player.set_soundfont("res://assets/sf/GS sound set (16 bit).SF2")
+	# MIDI
+#	visualMIDI.set_soundfont(Global.soundfont)
 #	midi_player.set_file("res://maps/LyricWulfFish.mid")
-	midi_player.set_file("res://maps/Shelter/LyricWulfShelter.mid")
+	visualMIDI.set_file("res://maps/Shelter/LyricWulfShelter.mid")
 
 	# Start playback for audio and MIDI
 #	audio_player.play()
-	midi_player.play()
+	visualMIDI.play()
 
-# MIDI EVENT!
+# MIDI EVENTS #
+# Visuals
 func _on_midi_player_midi_event(channel, event):
 	# Spawn notes
 	match event.type:
@@ -49,7 +52,8 @@ func _on_midi_player_midi_event(channel, event):
 		event_string,
 		])
 
-## SPAWNING NOTES ##
+## NOTE VISUALS ##
+# Spawning
 func spawnNote(note:int) -> void:
 	# Load the note scene
 	var note_scene = preload("res://scenes/note.tscn")
@@ -66,6 +70,17 @@ func spawnNote(note:int) -> void:
 		note_instance.position = Vector2(key_center_position.x, 0)
 	else:
 		push_error("Failed to get key.")
+
+# Note speed is calculated under Map.gd and stored as class variables.
+# Note speed is dependent on window size and the distance between the piano and top of the game viewport.
+func adjust_fall_speed():
+	var piano_node = $Piano
+	var pointA = Vector2(0,0)
+	var pointB = Vector2(0, piano_node.position.y)
+	Map.set_fall_speed(pointA.distance_to(pointB))
+
+func _on_resized() -> void:
+	adjust_fall_speed()
 
 ## GAME END
 func _on_midi_player_finished() -> void:

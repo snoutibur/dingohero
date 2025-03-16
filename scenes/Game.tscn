@@ -32,7 +32,7 @@ attenuation = 1e-05
 max_polyphony = 12
 panning_strength = 0.0
 
-[node name="MidiPlayer" parent="." instance=ExtResource("4_78awf")]
+[node name="VisualMIDI" parent="." instance=ExtResource("4_78awf")]
 volume_db = -6.0
 
 [node name="Button" type="Button" parent="."]
@@ -55,6 +55,7 @@ anchor_right = 0.0
 offset_right = 224.0
 grow_horizontal = 1
 
-[connection signal="finished" from="MidiPlayer" to="." method="_on_midi_player_finished"]
-[connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_player_midi_event"]
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="finished" from="VisualMIDI" to="." method="_on_midi_player_finished"]
+[connection signal="midi_event" from="VisualMIDI" to="." method="_on_midi_player_midi_event"]
 [connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]

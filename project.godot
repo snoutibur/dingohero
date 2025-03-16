@@ -23,6 +23,7 @@ buses/default_bus_layout=""
 [autoload]
 
 Global="*res://scripts/Global.gd"
+Map="*res://scripts/Map.gd"
 
 [display]
 
