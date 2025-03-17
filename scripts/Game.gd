@@ -17,7 +17,8 @@ func _ready():
 	# MIDI
 #	visualMIDI.set_soundfont(Global.soundfont)
 #	midi_player.set_file("res://maps/LyricWulfFish.mid")
-	visualMIDI.set_file("res://maps/Shelter/LyricWulfShelter.mid")
+	visualMIDI.set_file("res://maps/shelterMelody.mid")
+	visualMIDI.set_tempo(Map.bpm)
 
 	# MIDI must start first so it has time to hit the piao.
 	visualMIDI.play()
@@ -31,7 +32,7 @@ func _ready():
 
 ## SYNC AUDIO / MIDI ##
 func beats_to_seconds(bar:int, beat:int , time_signature:int, bpm:float) -> float:
-	return ((bar -1) * 4 + beat) * (60.0 / Map.bpm)
+	return ((bar -1) * time_signature + beat) * (60.0 / Map.bpm)
 
 func beats_to_ticks(bar:int, beat: int, time_signature:int, ticks_per_beat:int) -> int:
 	return ((bar) * time_signature + beat) * ticks_per_beat
@@ -47,7 +48,7 @@ func _on_metronome_metronome_tick(bar: int, beat: int) -> void:
 		print("Resyncing audio to", audio_target, "seconds")
 
 	# Sync MIDI File
-	visualMIDI.sync_to_beat(bar-Global.bars_on_screen, beat, 1)
+#	visualMIDI.sync_to_beat(bar-Global.bars_on_screen, beat, 1)
 
 # MIDI EVENTS #
 # Visuals

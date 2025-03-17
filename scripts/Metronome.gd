@@ -18,6 +18,8 @@ func start():
 	var click:float = 15 / Map.bpm # 1/16 note resolution
 	timer.wait_time = click
 	timer.start()
+	strong.play()
+
 
 func _on_timer_timeout() -> void:
 	sixteenth+=1;

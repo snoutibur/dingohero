@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://daagoaoouipl2"]
+[gd_scene load_steps=3 format=3 uid="uid://daagoaoouipl2"]
 
 [ext_resource type="Theme" uid="uid://bawo4huylley5" path="res://assets/ui/theme.tres" id="1_c2lxx"]
+
+[sub_resource type="GDScript" id="GDScript_c2lxx"]
+script/source = "extends Button
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/main.tscn\")
+"
+metadata/_edit_lock_ = true
 
 [node name="GameEnd" type="Control"]
 layout_mode = 3
@@ -24,3 +32,22 @@ theme_override_font_sizes/font_size = 32
 text = "Fin."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MainMenu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = -62.0
+offset_right = 74.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_c2lxx")
+text = "Main Menu"
+script = SubResource("GDScript_c2lxx")
+
+[connection signal="pressed" from="MainMenu" to="MainMenu" method="_on_pressed"]
