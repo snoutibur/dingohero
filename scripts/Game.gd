@@ -31,10 +31,10 @@ func _ready():
 
 ## SYNC AUDIO / MIDI ##
 func beats_to_seconds(bar:int, beat:int , time_signature:int, bpm:float) -> float:
-	return (bar * 4 + beat) * (60.0 / Map.bpm)
+	return ((bar -1) * 4 + beat) * (60.0 / Map.bpm)
 
 func beats_to_ticks(bar:int, beat: int, time_signature:int, ticks_per_beat:int) -> int:
-	return (bar * time_signature + beat) * ticks_per_beat
+	return ((bar) * time_signature + beat) * ticks_per_beat
 
 func _on_metronome_metronome_tick(bar: int, beat: int) -> void:
 	# Turn metronome click to seconds

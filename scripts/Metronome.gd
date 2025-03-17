@@ -8,7 +8,7 @@ extends Control
 @export var metroClick:bool = true;
 
 # Timecode
-@export var bar:int = 0
+@export var bar:int = 1
 @export var fourth:int = 0
 @export var sixteenth:int = 0
 
