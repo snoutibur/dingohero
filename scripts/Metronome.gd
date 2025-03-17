@@ -9,8 +9,8 @@ extends Control
 
 # Timecode
 @export var bar:int = 1
-@export var fourth:int = 0
-@export var sixteenth:int = 0
+@export var fourth:int = 1
+@export var sixteenth:int = 1
 
 signal metronome_tick(bar:int, beat:int)
 
