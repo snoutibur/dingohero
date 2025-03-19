@@ -41,7 +41,6 @@ volume_db = 16.0
 max_distance = 999999.0
 attenuation = 1e-05
 panning_strength = 0.0
-bus = &"Metronome"
 
 [node name="WeakClick" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(240, 40)
@@ -50,6 +49,5 @@ volume_db = 16.0
 max_distance = 999999.0
 attenuation = 1e-05
 panning_strength = 0.0
-bus = &"Metronome"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

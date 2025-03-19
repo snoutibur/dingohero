@@ -90,8 +90,11 @@ func spawnNote(note:int) -> void:
 	# Load the note scene
 	var note_scene = preload("res://scenes/note.tscn")
 	var note_instance = note_scene.instantiate()
+	
+	# Add the note too tree + add meta
+	note_instance.set_meta("midi_note", note)
 	add_child(note_instance)
-
+	
 	# Find the key
 	var target_key_path:String = "Piano/Oct" + str(Global.octaveOf(note)) + "/Key" + str(note)
 	var key: Node = get_node(target_key_path)
