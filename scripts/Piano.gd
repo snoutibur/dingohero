@@ -32,6 +32,17 @@ func generate_keys(octaves: int):
 
 	print("Octave generation complete")
 
+# Highlights chosen key
+func highlightKey(note: int) -> void:
+	# Select note
+	var key_path:String = "Oct" + str(Piano.octaveOf(note)) + "/Key" + str(note)
+	var target: Node = get_node(key_path)
+
+	if target:
+		target.modulate = Global.highlight_color
+		await get_tree().create_timer(.15).timeout
+		target.modulate = Global.white_key_color
+	
 func _ready():
 	if octave_template == null:
 		print("Octave template no exist!")
@@ -42,5 +53,5 @@ func _ready():
 func _on_wide_detection_area_area_entered(area:Area2D) -> void:
 	var midi_note = area.get_parent().get_meta("midi_note")
 	if midi_note:
-		print(midi_note)
+		highlightKey(midi_note)
 	area.get_parent().queue_free()

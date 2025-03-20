@@ -16,8 +16,8 @@ func _ready():
 	# PLAY AUDIO & VISUALIZER #
 	# MIDI
 #	visualMIDI.set_soundfont(Global.soundfont)
-#	midi_player.set_file("res://maps/LyricWulfFish.mid")
-	visualMIDI.set_file("res://maps/shelterMelody.mid")
+	visualMIDI.set_file("res://maps/LyricWulfFish.mid")
+#	visualMIDI.set_file("res://maps/shelterMelody.mid")
 	visualMIDI.set_tempo(Map.bpm)
 
 	# MIDI must start first so it has time to hit the piao.
@@ -27,7 +27,7 @@ func _ready():
 
 	# Start playback for the audio and timekeeper.
 	metronome.start()
-	audio_player.play()
+#	audio_player.play()
 
 
 ## SYNC AUDIO / MIDI ##
@@ -86,22 +86,6 @@ func _on_midi_player_midi_event(channel, event):
 
 		
 ## NOTE VISUALS ##
-# Highlights chosen key
-func highlightKey(note: int) -> void:
-	# Select note
-	var key_path:String = "Piano/Oct" + str(Piano.octaveOf(note)) + "/Key" + str(note)
-	var target: Node = get_node(key_path)
-
-	if target:
-		# Store color, change to highlight color
-		var original_color = target.modulate
-		target.modulate = Color(1,0,0)
-
-		# Timeout & reset key color
-		await get_tree().create_timer(.15).timeout
-		target.modulate = original_color
-
-
 # Adjusting fall speed
 func _on_resized() -> void: # Note speed is dependent on window size and the distance between the piano and top of the game viewport.
 	adjust_fall_speed()
