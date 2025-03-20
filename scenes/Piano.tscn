@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://pjn3fn5td8me"]
+[gd_scene load_steps=7 format=3 uid="uid://pjn3fn5td8me"]
 
 [ext_resource type="Script" uid="uid://bmfc8q7a86g5n" path="res://scripts/Piano.gd" id="1_uiv44"]
 
@@ -8,8 +8,17 @@ border_width_right = 3
 border_color = Color(0, 0, 0, 1)
 corner_detail = 1
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uiv44"]
+size = Vector2(19.5, 6.6875)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uiv44"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pft0"]
+size = Vector2(19.6875, 6.6875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5yau4"]
+size = Vector2(11.1875, 6.6875)
 
 [node name="Piano" type="Control"]
 layout_mode = 3
@@ -36,6 +45,14 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
 clip_text = true
 
+[node name="NoteDetection" type="Area2D" parent="Octave/KeyC"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyC/NoteDetection"]
+position = Vector2(42, 0)
+shape = SubResource("RectangleShape2D_uiv44")
+debug_color = Color(0.186117, 0.780598, 0.00140159, 0.42)
+
 [node name="KeyCs" type="Button" parent="Octave"]
 z_index = 1
 layout_mode = 0
@@ -46,6 +63,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
 clip_text = true
 
+[node name="NoteDetection" type="Area2D" parent="Octave/KeyCs"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyCs/NoteDetection"]
+position = Vector2(42.1562, 0)
+shape = SubResource("RectangleShape2D_3pft0")
+debug_color = Color(0.2, 0.603922, 0, 0.419608)
+
 [node name="KeyD" type="Button" parent="Octave"]
 layout_mode = 0
 offset_left = 32.0
@@ -54,6 +79,14 @@ offset_bottom = 185.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
 clip_text = true
+
+[node name="NoteDetection" type="Area2D" parent="Octave/KeyD"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyD/NoteDetection"]
+position = Vector2(46.625, 0)
+shape = SubResource("RectangleShape2D_5yau4")
+debug_color = Color(0.410219, 0.839671, 0.66738, 0.42)
 
 [node name="KeyDs" type="Button" parent="Octave"]
 z_index = 1
@@ -65,6 +98,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
 clip_text = true
 
+[node name="NoteDetection" type="Area2D" parent="Octave/KeyDs"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyDs/NoteDetection"]
+position = Vector2(42.1562, 0)
+shape = SubResource("RectangleShape2D_3pft0")
+debug_color = Color(0.199787, 0.603378, 0, 0.42)
+
 [node name="KeyE" type="Button" parent="Octave"]
 layout_mode = 0
 offset_left = 64.0
@@ -74,6 +115,14 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
 clip_text = true
 
+[node name="NoteDetection" type="Area2D" parent="Octave/KeyE"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyE/NoteDetection"]
+position = Vector2(51, 0)
+shape = SubResource("RectangleShape2D_uiv44")
+debug_color = Color(0.186117, 0.780598, 0.00140159, 0.42)
+
 [node name="KeyF" type="Button" parent="Octave"]
 layout_mode = 0
 offset_left = 96.0
@@ -82,6 +131,14 @@ offset_bottom = 185.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
 clip_text = true
+
+[node name="NoteDetection" type="Area2D" parent="Octave/KeyF"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyF/NoteDetection"]
+position = Vector2(42, 0)
+shape = SubResource("RectangleShape2D_uiv44")
+debug_color = Color(0.186117, 0.780598, 0.00140159, 0.42)
 
 [node name="KeyFs" type="Button" parent="Octave"]
 z_index = 1
@@ -93,6 +150,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
 clip_text = true
 
+[node name="NoteDetection" type="Area2D" parent="Octave/KeyFs"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyFs/NoteDetection"]
+position = Vector2(42.1562, 0)
+shape = SubResource("RectangleShape2D_3pft0")
+debug_color = Color(0.2, 0.603922, 0, 0.419608)
+
 [node name="KeyG" type="Button" parent="Octave"]
 layout_mode = 0
 offset_left = 128.0
@@ -101,6 +166,14 @@ offset_bottom = 185.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
 clip_text = true
+
+[node name="NoteDetection" type="Area2D" parent="Octave/KeyG"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyG/NoteDetection"]
+position = Vector2(46, 0)
+shape = SubResource("RectangleShape2D_5yau4")
+debug_color = Color(0.411765, 0.839216, 0.666667, 0.419608)
 
 [node name="KeyGs" type="Button" parent="Octave"]
 z_index = 1
@@ -112,6 +185,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
 clip_text = true
 
+[node name="NoteDetection" type="Area2D" parent="Octave/KeyGs"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyGs/NoteDetection"]
+position = Vector2(42.1562, 0)
+shape = SubResource("RectangleShape2D_3pft0")
+debug_color = Color(0.2, 0.603922, 0, 0.419608)
+
 [node name="KeyA" type="Button" parent="Octave"]
 layout_mode = 0
 offset_left = 160.0
@@ -120,6 +201,14 @@ offset_bottom = 185.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
 clip_text = true
+
+[node name="NoteDetection2" type="Area2D" parent="Octave/KeyA"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyA/NoteDetection2"]
+position = Vector2(45.4062, 0)
+shape = SubResource("RectangleShape2D_5yau4")
+debug_color = Color(0.411765, 0.839216, 0.666667, 0.419608)
 
 [node name="KeyAs" type="Button" parent="Octave"]
 z_index = 1
@@ -131,6 +220,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_uiv44")
 clip_text = true
 
+[node name="NoteDetection" type="Area2D" parent="Octave/KeyAs"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyAs/NoteDetection"]
+position = Vector2(42.1562, 0)
+shape = SubResource("RectangleShape2D_3pft0")
+debug_color = Color(0.2, 0.603922, 0, 0.419608)
+
 [node name="KeyB" type="Button" parent="Octave"]
 layout_mode = 0
 offset_left = 192.0
@@ -139,3 +236,11 @@ offset_bottom = 185.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7act")
 clip_text = true
+
+[node name="NoteDetection" type="Area2D" parent="Octave/KeyB"]
+position = Vector2(-32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/KeyB/NoteDetection"]
+position = Vector2(51, 0)
+shape = SubResource("RectangleShape2D_uiv44")
+debug_color = Color(0.186117, 0.780598, 0.00140159, 0.42)

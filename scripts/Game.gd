@@ -1,19 +1,19 @@
-
 extends Control
 
-# Audio player for the backing track, responsible for playing the song
-@onready var audio_player = $BackingSong
-# MIDI player, responsible for handling MIDI note events
-@onready var visualMIDI = $VisualMIDI
+## Initialization ##
 # Metronome display and audio
 @onready var metronome = $Metronome
 
-var playing:bool = false
+# Audio player for the backing track
+@onready var audio_player = $BackingSong
+# MIDI player, responsible for handling MIDI note events
+@onready var visualMIDI = $VisualMIDI
+
 
 func _ready():
-	adjust_fall_speed()
+	adjust_fall_speed() # Make sure the notes are falling at the right speed for screen size.
 
-	# PLAY AUDIO #
+	# PLAY AUDIO & VISUALIZER #
 	# MIDI
 #	visualMIDI.set_soundfont(Global.soundfont)
 #	midi_player.set_file("res://maps/LyricWulfFish.mid")
@@ -84,7 +84,19 @@ func _on_midi_player_midi_event(channel, event):
 		event_string,
 		])
 
+		
 ## NOTE VISUALS ##
+# Adjusting fall speed
+func _on_resized() -> void: # Note speed is dependent on window size and the distance between the piano and top of the game viewport.
+	adjust_fall_speed()
+
+func adjust_fall_speed():
+	var piano_node = $Piano
+	var pointA = Vector2(0,0)
+	var pointB = Vector2(0, piano_node.position.y)
+	Map.set_fall_speed(pointA.distance_to(pointB)) # Note speed is calculated under Map.gd and stored as class variables.
+	
+	
 # Spawning
 func spawnNote(note:int) -> void:
 	# Load the note scene
@@ -105,20 +117,8 @@ func spawnNote(note:int) -> void:
 		note_instance.position = Vector2(key_center_position.x, 0)
 	else:
 		push_error("Failed to get key.")
-
-
-# Note speed is calculated under Map.gd and stored as class variables.
-# Note speed is dependent on window size and the distance between the piano and top of the game viewport.
-func adjust_fall_speed():
-	var piano_node = $Piano
-	var pointA = Vector2(0,0)
-	var pointB = Vector2(0, piano_node.position.y)
-	Map.set_fall_speed(pointA.distance_to(pointB))
-
-func _on_resized() -> void:
-	adjust_fall_speed()
-
-
-## GAME END
+		
+	
+## EVENTS ##
 func _on_midi_player_finished() -> void:
 	get_tree().change_scene_to_file("res://scenes/GameEnd.tscn")

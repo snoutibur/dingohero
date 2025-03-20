@@ -12,7 +12,7 @@ func generate_keys(octaves: int):
 		new_octave.name = "Oct" + str(Global.octaveOf(curNote))
 		new_octave.position.x = i * octave_template.get_rect().size.x
 		add_child(new_octave)
-
+		
 		# ID the keys to a MIDI Note
 		for key in new_octave.get_children():
 			if key.name.begins_with("Key"):
