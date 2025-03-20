@@ -131,7 +131,6 @@ func spawnNote(note:int) -> void:
 	if key:
 		var key_center_position = key.global_position + (key.size * 0.25)
 		note_instance.position = Vector2(key_center_position.x, 0)
-		highlightKey(note)
 	else:
 		push_error("Failed to get key.")
 		

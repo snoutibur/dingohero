@@ -37,3 +37,10 @@ func _ready():
 		print("Octave template no exist!")
 	else:
 		generate_keys(7)
+
+
+func _on_wide_detection_area_area_entered(area:Area2D) -> void:
+	var midi_note = area.get_parent().get_meta("midi_note")
+	if midi_note:
+		print(midi_note)
+	area.get_parent().queue_free()

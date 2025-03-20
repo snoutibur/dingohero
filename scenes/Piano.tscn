@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://pjn3fn5td8me"]
+[gd_scene load_steps=8 format=3 uid="uid://pjn3fn5td8me"]
 
 [ext_resource type="Script" uid="uid://bmfc8q7a86g5n" path="res://scripts/Piano.gd" id="1_uiv44"]
 
@@ -19,6 +19,9 @@ size = Vector2(19.6875, 6.6875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5yau4"]
 size = Vector2(11.1875, 6.6875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yr2f6"]
+size = Vector2(224, 5)
 
 [node name="Piano" type="Control"]
 layout_mode = 3
@@ -244,3 +247,14 @@ position = Vector2(-32, 0)
 position = Vector2(51, 0)
 shape = SubResource("RectangleShape2D_uiv44")
 debug_color = Color(0.186117, 0.780598, 0.00140159, 0.42)
+
+[node name="WideDetectionArea" type="Area2D" parent="Octave"]
+collision_layer = 8
+collision_mask = 240
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Octave/WideDetectionArea"]
+position = Vector2(112, 0.5)
+shape = SubResource("RectangleShape2D_yr2f6")
+debug_color = Color(0.815733, 0.138, 0.92, 0.819608)
+
+[connection signal="area_entered" from="Octave/WideDetectionArea" to="." method="_on_wide_detection_area_area_entered"]
