@@ -86,6 +86,22 @@ func _on_midi_player_midi_event(channel, event):
 
 		
 ## NOTE VISUALS ##
+# Highlights chosen key
+func highlightKey(note: int) -> void:
+	# Select note
+	var key_path:String = "Piano/Oct" + str(Piano.octaveOf(note)) + "/Key" + str(note)
+	var target: Node = get_node(key_path)
+
+	if target:
+		# Store color, change to highlight color
+		var original_color = target.modulate
+		target.modulate = Color(1,0,0)
+
+		# Timeout & reset key color
+		await get_tree().create_timer(.15).timeout
+		target.modulate = original_color
+
+
 # Adjusting fall speed
 func _on_resized() -> void: # Note speed is dependent on window size and the distance between the piano and top of the game viewport.
 	adjust_fall_speed()
@@ -108,13 +124,14 @@ func spawnNote(note:int) -> void:
 	add_child(note_instance)
 	
 	# Find the key
-	var target_key_path:String = "Piano/Oct" + str(Global.octaveOf(note)) + "/Key" + str(note)
+	var target_key_path:String = "Piano/Oct" + str(Piano.octaveOf(note)) + "/Key" + str(note)
 	var key: Node = get_node(target_key_path)
 
 	# Put the note where it's supposed to go
 	if key:
 		var key_center_position = key.global_position + (key.size * 0.25)
 		note_instance.position = Vector2(key_center_position.x, 0)
+		highlightKey(note)
 	else:
 		push_error("Failed to get key.")
 		
