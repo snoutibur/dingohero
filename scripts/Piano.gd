@@ -3,11 +3,30 @@ extends Control
 var curNote:int = 24
 @onready var octave_template = $Octave
 
-# Finds the octave of a midi note.
+## UTILS ##
 func octaveOf(midiNote:int) -> int:
 	return int((midiNote - 12) / 12)
 
+# KEY HIGHLIGHTS
+func highlightKey(note: int) -> void:
+	# Select note
+	var key_path:String = "Oct" + str(Piano.octaveOf(note)) + "/Key" + str(note)
+	var target: Node = get_node(key_path)
 
+	# Highlights note
+	if target:
+		target.modulate = Global.highlight_color
+
+func unhighlight_key(note: int) -> void:
+	# Select note
+	var key_path:String = "Oct" + str(Piano.octaveOf(note)) + "/Key" + str(note)
+	var target: Node = get_node(key_path)
+
+	if target:
+		target.modulate = Global.white_key_color
+
+
+## Key Generation ##
 func generate_keys(octaves: int):
 	print("Generating " + str(octaves) + " octaves using template: " + str(octave_template))
 
@@ -32,22 +51,12 @@ func generate_keys(octaves: int):
 
 	print("Octave generation complete")
 
-# Highlights chosen key
-func highlightKey(note: int) -> void:
-	# Select note
-	var key_path:String = "Oct" + str(Piano.octaveOf(note)) + "/Key" + str(note)
-	var target: Node = get_node(key_path)
-
-	if target:
-		target.modulate = Global.highlight_color
-		await get_tree().create_timer(.15).timeout
-		target.modulate = Global.white_key_color
-	
 func _ready():
 	if octave_template == null:
 		print("Octave template no exist!")
 	else:
 		generate_keys(7)
+
 
 ## GAMEPLAY ##
 func _input(event):
