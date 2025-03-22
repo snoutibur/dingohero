@@ -49,9 +49,15 @@ func _ready():
 	else:
 		generate_keys(7)
 
+## GAMEPLAY ##
+func _input(event):
+	if event is InputEventMIDI:
+		if event.channel == 0:
+			print("NoteData:")
+			print("Pitch: " + str(event.pitch))
+			highlightKey(event.pitch)
 
 func _on_wide_detection_area_area_entered(area:Area2D) -> void:
 	var midi_note = area.get_parent().get_meta("midi_note")
 	if midi_note:
-		highlightKey(midi_note)
-	area.get_parent().queue_free()
+		area.get_parent().queue_free()

@@ -47,7 +47,7 @@ func _on_metronome_metronome_tick(bar: int, beat: int) -> void:
 		audio_player.seek(audio_target)
 		print("Resyncing audio to", audio_target, "seconds")
 
-	# Sync MIDI File
+	# Sync MIDI File TODO: Sync doesn't actually work
 #	visualMIDI.sync_to_beat(bar-Global.bars_on_screen, beat, 1)
 
 # MIDI EVENTS #
