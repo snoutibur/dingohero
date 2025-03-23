@@ -61,12 +61,19 @@ func _ready():
 ## GAMEPLAY ##
 func _input(event):
 	if event is InputEventMIDI:
+		print("Raw MIDI Event - Message:", event.message, " Pitch:", event.pitch, " Velocity:", event.velocity)
+		
 		if event.channel == 0:
-			print("NoteData:")
-			print("Pitch: " + str(event.pitch))
-			highlightKey(event.pitch)
+			# Filters MIDI event
+			var note_on:bool = (event.message == 9) and (event.velocity > 0)  # Note On with velocity > 0
+			var note_off:bool = (event.message == 8) or ((event.message == 9) and (event.velocity == 0))  # Note Off with 0 velocity
+			
+			if note_on:
+				highlightKey(event.pitch)
+			if note_off:
+				unhighlight_key(event.pitch)
 
 func _on_wide_detection_area_area_entered(area:Area2D) -> void:
 	var midi_note = area.get_parent().get_meta("midi_note")
-	if midi_note:
-		area.get_parent().queue_free()
+#	if midi_note:
+#		area.get_parent().queue_free()

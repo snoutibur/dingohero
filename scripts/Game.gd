@@ -16,8 +16,8 @@ func _ready():
 	# PLAY AUDIO & VISUALIZER #
 	# MIDI
 #	visualMIDI.set_soundfont(Global.soundfont)
-	visualMIDI.set_file("res://maps/LyricWulfFish.mid")
-#	visualMIDI.set_file("res://maps/shelterMelody.mid")
+#	visualMIDI.set_file("res://maps/LyricWulfFish.mid")
+	visualMIDI.set_file("res://maps/shelterMelody.mid")
 	visualMIDI.set_tempo(Map.bpm)
 
 	# MIDI must start first so it has time to hit the piao.
@@ -27,7 +27,7 @@ func _ready():
 
 	# Start playback for the audio and timekeeper.
 	metronome.start()
-#	audio_player.play()
+	audio_player.play()
 
 
 ## SYNC AUDIO / MIDI ##
