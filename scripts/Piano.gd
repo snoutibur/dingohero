@@ -43,7 +43,7 @@ func generate_keys(octaves: int):
 				key.set_meta("midi_note", curNote)  # Attach midi_note as metadata to the key
 				key.name = "Key" + str(curNote)
 				key.text = str(curNote) # Set the button's text to the MIDI note number
-				print("Assigned MIDI note ", str(curNote), " to ", key.name)
+#				print("Assigned MIDI note ", str(curNote), " to ", key.name)
 				curNote+=1
 
 	# Remove the original template after duplication
@@ -76,5 +76,5 @@ func _input(event):
 
 func _on_wide_detection_area_area_entered(area:Area2D) -> void:
 	var midi_note = area.get_parent().get_meta("midi_note")
-	if midi_note:
-		area.get_parent().queue_free()
+#	if midi_note:
+#		area.get_parent().queue_free()

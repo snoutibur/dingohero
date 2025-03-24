@@ -14,7 +14,7 @@ func _ready():
 	## GAME SETUP ##
 	# Initialize MIDI inputs
 	OS.open_midi_inputs()
-	print(OS.get_connected_midi_inputs())
+	print("MIDI Devices: "+ str(OS.get_connected_midi_inputs()))
 	
 	# PLAY AUDIO & VISUALIZER #
 	# MIDI #
@@ -49,9 +49,9 @@ func _on_metronome_metronome_tick(bar: int, beat: int) -> void:
 	var audio_position = audio_player.get_playback_position()
 	if abs(audio_position - audio_target) > .05:
 		audio_player.seek(audio_target)
-		print("Resyncing audio to", audio_target, "seconds")
+		print("Resyncing audio to ", audio_target, "seconds")
 
-	# Sync MIDI File TODO: Sync doesn't actually work
+	# Sync MIDI File TODO: MIDI sync doesn't actually work
 #	visualMIDI.sync_to_beat(bar-Global.bars_on_screen, beat, 1)
 
 # MIDI EVENTS #
