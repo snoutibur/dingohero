@@ -11,14 +11,18 @@ extends Control
 
 
 func _ready():
-	adjust_fall_speed() # Make sure the notes are falling at the right speed for screen size.
-
+	## GAME SETUP ##
+	# Initialize MIDI inputs
+	OS.open_midi_inputs()
+	print(OS.get_connected_midi_inputs())
+	
 	# PLAY AUDIO & VISUALIZER #
-	# MIDI
-#	visualMIDI.set_soundfont(Global.soundfont)
-#	visualMIDI.set_file("res://maps/LyricWulfFish.mid")
+	# MIDI #
+	adjust_fall_speed() # Make sure the notes are falling at the right speed for screen size.
+	# Visuals config
 	visualMIDI.set_file("res://maps/shelterMelody.mid")
 	visualMIDI.set_tempo(Map.bpm)
+#	visualMIDI.set_soundfont(Global.soundfont)
 
 	# MIDI must start first so it has time to hit the piao.
 	visualMIDI.play()
@@ -117,8 +121,9 @@ func spawnNote(note:int) -> void:
 		note_instance.position = Vector2(key_center_position.x, 0)
 	else:
 		push_error("Failed to get key.")
-		
-	
+
+
 ## EVENTS ##
+# End game
 func _on_midi_player_finished() -> void:
 	get_tree().change_scene_to_file("res://scenes/GameEnd.tscn")

@@ -52,6 +52,7 @@ func generate_keys(octaves: int):
 	print("Octave generation complete")
 
 func _ready():
+	## SETS UP THE GAME ##
 	if octave_template == null:
 		print("Octave template no exist!")
 	else:
@@ -75,5 +76,5 @@ func _input(event):
 
 func _on_wide_detection_area_area_entered(area:Area2D) -> void:
 	var midi_note = area.get_parent().get_meta("midi_note")
-#	if midi_note:
-#		area.get_parent().queue_free()
+	if midi_note:
+		area.get_parent().queue_free()
