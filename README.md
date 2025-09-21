@@ -3,6 +3,17 @@ A somewhat educational rhythm game inspired by Synthesia and the falling note pi
 
 The intent is to make a more game-like alternative with automatically synced backing tracks.
 
+## Hiatus / Discontinued status
+Development for DingoHero has been paused, or stopped.
+
+This is what it looks like at the of writing this README:
+![Sample of the main game](DemoScreenshot.png)
+- Spawns MIDI notes by reading a file
+- Notes hit keyboard at the right time (compared against a backing track)
+- Primitive audio / metronome sync implemented
+
+I do have plans on reviving the project soon™.
+
 ## Gameplay
 ### Hardware Setup
 Hook up a MIDI keyboard to your computer and the game should automatically detect it and accept input.
@@ -17,5 +28,3 @@ Maps are stored in folders as basic MIDI and audio files with a json file that s
 
 ### Creating a map
 Because maps are not much more than MIDI, maps can be created with any program that allows MIDI editing such as your favorite DAW.
-
-TODO: Add a map template
