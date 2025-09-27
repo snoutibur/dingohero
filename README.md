@@ -12,7 +12,7 @@ This is what it looks like at the of writing this README:
 - Notes hit keyboard at the right time (compared against a backing track)
 - Primitive audio / metronome sync implemented
 
-I do have plans on reviving the project soon™.
+See [MIDINGO](midingo.github.io), the spiritual successor to dingohero.
 
 ## Gameplay
 ### Hardware Setup
